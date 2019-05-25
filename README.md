@@ -1,5 +1,5 @@
 # Tmux network status
-This is work in progress. Some additions and changes will be made to the original repository.
+This is work in progress. Some additions and changes will be made to the original repository. There is no support for OSX yet.
 
 ------------------------------
 # Tmux LAN status
