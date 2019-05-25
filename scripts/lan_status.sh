@@ -49,10 +49,11 @@ ip_lan_status() {
 			# Parse IP address for the NIC.
 			IPLAN="$(ip addr show ${NIC} | grep '\<inet\>' | tr -s ' ' | cut -d ' ' -f3)"
 			# Trim the CIDR suffix.
-			IPLAN="${IPLAN%/*}"
+			# IPLAN="${IPLAN%/*}"
 			# Only display the last entry
-			IPLAN="$(echo "$IPLAN" | tail -1)"
-			[ -n "$IPLAN" ] && break
+			# IPLAN="$(echo "$IPLAN" | tail -1)"
+			IPLAN="$(echo "${NIC}: $IPLAN")"
+			[[ -n $IPLAN ]] && break
 		done
 	fi
 
@@ -62,8 +63,8 @@ ip_lan_status() {
 print_lan_status() {
 	# spacer fixes weird emoji spacing
 	local spacer=" "
-  if [ $(ip_lan_status) ]; then
-    printf "$(get_tmux_option "$online_lan_option_string" "$(online_lan_icon_default)")$spacer$(ip_lan_status)"
+  if [[ $(ip_lan_status) ]]; then
+    printf "$spacer$(ip_lan_status)"
   else
     printf "$(get_tmux_option "$offline_lan_option_string" "$(offline_lan_icon_default)")$spacer"
   fi
