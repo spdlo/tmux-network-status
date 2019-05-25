@@ -1,3 +1,7 @@
+# Tmux network status
+This is work in progress. Some additions and changes will be made to the original repository.
+
+------------------------------
 # Tmux LAN status
 
 Tmux plugin that enables displaying LAN status and IP for your workstation.
